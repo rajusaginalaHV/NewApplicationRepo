@@ -1,0 +1,8 @@
+{
+  "id": "main",
+  "description": "Flow main",
+  "defaultPage": "main-employees",
+  "services": {},
+  "types": {},
+  "variables": {}
+}

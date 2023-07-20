@@ -1,0 +1,74 @@
+<!-- Mobile only header and page title -->
+<header role="banner" class="oj-sm-flex-initial vb-web-applayout-header oj-md-hide">
+  <div role="image" class="vb-web-applayout-header-image-stripe"></div>
+  <div class="oj-flex-bar oj-sm-align-items-center vb-web-applayout-header-content">
+    <!-- Navigator toggle button will render only if we have a drawer -->
+    <oj-bind-if test="[[ document.querySelector('oj-vb-fragment[name=\'shell-drawer\']') ]]">
+      <div class="oj-flex-bar">
+        <oj-button on-oj-action="[[$listeners.toggleDrawer]]" chroming="borderless"
+                   display="icons">
+          <span slot="startIcon" class="oj-ux-ico-menu"></span>
+          <span><oj-bind-text value="[[$application.translations.app.app_title_navigation_drawer]]"></oj-bind-text></span>
+        </oj-button>
+      </div>
+    </oj-bind-if>
+    <!-- Page specific title and actions with overflow menu displayed -->
+    <div class="oj-sm-margin-2x-horizontal oj-sm-align-items-center oj-md-hide oj-sm-flex-1">
+      <div class="vb-content-header oj-flex oj-sm-flex-items-initial oj-sm-align-items-center">
+        <div class="oj-flex-item">
+          <div class="oj-typography-body-lg oj-typography-semi-bold">
+            <oj-bind-text value="Edit Employee"></oj-bind-text>
+          </div>
+          <!-- Add Page specific actions etc -->
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Page specific title and actions for desktop formfactor -->
+<div class="vb-content-header oj-flex oj-sm-flex-1 oj-sm-only-hide oj-sm-align-items-center">
+  <div role="image" class="vb-content-header-image-stripe"></div>
+  <div class="oj-flex-item">
+    <div class="oj-typography-body-lg oj-typography-semi-bold">
+      <oj-bind-text value="Edit Employee"></oj-bind-text>
+    </div>
+    <!-- Add Page specific actions etc -->
+  </div>
+</div>
+<div class="oj-flex">
+  <div class="oj-sm-margin-6x-top oj-flex-item oj-sm-12 oj-md-12">
+    <oj-avatar class="oj-flex-item oj-sm-flex-initial" size="lg" src="[[ $variables.employee.picture ]]"></oj-avatar>
+  </div>
+</div>
+<div class="oj-flex">
+  <oj-validation-group id="validation-group" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-form-layout class="oj-formlayout-full-width" label-edge="start" max-columns="2">
+      <oj-input-text value="{{ $variables.employee.name }}" label-hint="﻿Name" required="true"></oj-input-text>
+      <oj-input-text value="{{ $variables.employee.picture }}" label-hint="Picture"></oj-input-text>
+      <oj-input-number value="{{ $variables.employee.salary }}" label-hint="Salary"></oj-input-number>
+      <oj-input-text value="{{ $variables.employee.email }}" label-hint="Email"></oj-input-text>
+      <oj-input-date value="{{ $variables.employee.hireDate }}" label-hint="Hire Date"></oj-input-date>
+      <oj-input-text value="{{ $variables.employee.country }}" label-hint="Country"
+        on-value-changed="[[$listeners.inputTextValue]]"></oj-input-text>
+    </oj-form-layout>
+  </oj-validation-group>
+</div>
+<div>
+  <h6 class="oj-header oj-flex-item oj-sm-flex-initial">Country Info</h6>
+  <div class="oj-flex-item oj-sm-flex-initial">
+    <oj-form-layout>
+      <oj-avatar class="oj-flex-item oj-sm-flex-initial" size="lg" src="[[ $variables.countryTypeVar.flag ]]"></oj-avatar>
+      <oj-input-text label-hint="Time Zone" value="{{ $variables.countryTypeVar.timezones[0] }}"></oj-input-text>
+      <oj-input-text label-hint="Region" value="{{ $variables.countryTypeVar.region }}"></oj-input-text>
+    </oj-form-layout>
+  </div>
+</div>
+<div class="oj-flex">
+  <oj-toolbar chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-button on-oj-action="[[$listeners.backButtonClicked]]">Cancel</oj-button>
+    <oj-button on-oj-action="[[$listeners.saveButtonClicked]]" disabled="[[ $variables.saveEmployeeChainInProgress ]]">Save</oj-button>
+  </oj-toolbar>
+</div>
+
+

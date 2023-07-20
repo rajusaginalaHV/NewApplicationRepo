@@ -1,0 +1,83 @@
+{
+    "displayLabel": "Department",
+    "fields": [
+        {
+            "displayLabel": "Id",
+            "key": true,
+            "name": "id",
+            "oid": "bd64d929-8144-40a0-9361-78f0c7f385f2",
+            "required": true,
+            "type": "number",
+            "unique": true
+        },
+        {
+            "displayLabel": "Created",
+            "historyType": "timeCreated",
+            "name": "creationDate",
+            "oid": "5b3c2af2-725f-4cac-bca5-c3f93f3b6e2e",
+            "type": "datetime"
+        },
+        {
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated",
+            "name": "lastUpdateDate",
+            "oid": "2a4b846b-c5d9-48f0-ac12-151635b44c08",
+            "type": "datetime"
+        },
+        {
+            "displayLabel": "Created By",
+            "historyType": "createdBy",
+            "name": "createdBy",
+            "oid": "18bc8f56-b659-4a31-8485-70a03d0cbb37",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy",
+            "name": "lastUpdatedBy",
+            "oid": "4f142e78-50ec-48a7-a602-afe373929e66",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber",
+            "name": "versionNumber",
+            "oid": "bc7cc888-5d81-44fe-bdc2-4ff6056cc7d3",
+            "type": "number"
+        },
+        {
+            "displayLabel": "Department",
+            "name": "department",
+            "oid": "afeafb45-c033-45c3-8fe2-ea68b4a71c4d",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "Location",
+            "name": "location",
+            "oid": "8b9f1f4d-1ab0-46d0-bc9e-749352854e79",
+            "type": "number"
+        }
+    ],
+    "hidden": false,
+    "name": "Department",
+    "oid": "ce2a6ddc-0849-4846-a5a0-d475cd50c10e",
+    "relationships": [
+        {
+            "displayField": "department",
+            "name": "employeeCollection",
+            "reverseRelationship": "departmentObject",
+            "targetEntity": "Employee",
+            "type": "incoming"
+        },
+        {
+            "deleteRule": "restrict",
+            "exposeAccessor": true,
+            "mappingField": "location",
+            "name": "locationObject",
+            "reverseRelationship": "departmentCollection",
+            "targetEntity": "Location",
+            "type": "outgoing"
+        }
+    ]
+}

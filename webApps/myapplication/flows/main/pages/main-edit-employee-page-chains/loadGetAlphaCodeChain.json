@@ -1,0 +1,74 @@
+{
+  "root": "testValidInput",
+  "description": "Loads getAlphaCode record data",
+  "variables": {
+    "code": {
+      "type": "string",
+      "input": "fromCaller"
+    }
+  },
+  "actions": {
+    "testValidInput": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ true && $variables.code !== undefined ]]"
+      },
+      "outcomes": {
+        "true": "resetGetAlphaCodeData"
+      },
+      "description": "Tests the REST call can be initiated",
+      "label": "Test valid input"
+    },
+    "resetGetAlphaCodeData": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getAlphaCode"
+        ]
+      },
+      "outcomes": {
+        "success": "loadGetAlphaCode"
+      },
+      "description": "Clears getAlphaCode data the variable holds",
+      "label": "Reset getAlphaCode variable"
+    },
+    "loadGetAlphaCode": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "Countries/getAlphaCode",
+        "responseType": "getAlphaCodeResponse",
+        "uriParams": {
+          "code": "[[ $variables.code ]]"
+        }
+      },
+      "outcomes": {
+        "success": "assignGetAlphaCodeData",
+        "failure": "fireErrorNotification"
+      },
+      "description": "Initiates REST call loading getAlphaCode data",
+      "label": "Load getAlphaCode record"
+    },
+    "assignGetAlphaCodeData": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAlphaCode": {
+          "source": "[[ $chain.results.loadGetAlphaCode.body ]]",
+          "auto": "always"
+        }
+      },
+      "description": "Assigns data loaded by the REST call to the getAlphaCode variable",
+      "label": "Assign getAlphaCode data"
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Could not load data",
+        "message": "[[ 'Could not load data: status ' + $chain.results.loadGetAlphaCode.status ]]",
+        "type": "error",
+        "displayMode": "persist"
+      },
+      "description": "Shows an error message informing about data load failure",
+      "label": "Show error message"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+id,creationDate,lastUpdateDate,createdBy,lastUpdatedBy,department,location
+1,2023-07-19T05:29:40.629,2023-07-19T06:37:11,devops_user,devops_user,Administration,4
+2,2023-07-19T05:29:40.65,2023-07-19T05:29:40.65,devops_user,devops_user,Marketing,2
+3,2023-07-19T05:29:40.65,2023-07-19T05:29:40.65,devops_user,devops_user,Purchasing,3
+4,2023-07-19T05:29:40.65,2023-07-19T05:29:40.65,devops_user,devops_user,Human Resources,1
+5,2023-07-19T05:46:34,2023-07-19T05:46:34.062,devops_user,devops_user,IT,4

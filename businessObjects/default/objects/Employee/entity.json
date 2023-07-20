@@ -1,0 +1,106 @@
+{
+    "displayLabel": "Employee",
+    "fields": [
+        {
+            "displayLabel": "Id",
+            "key": true,
+            "name": "id",
+            "oid": "6418bb38-29f9-46d8-88c3-0e32b1a6f104",
+            "required": true,
+            "type": "number",
+            "unique": true
+        },
+        {
+            "displayLabel": "Created",
+            "historyType": "timeCreated",
+            "name": "creationDate",
+            "oid": "41518623-b524-4e40-814a-51749faabc23",
+            "type": "datetime"
+        },
+        {
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated",
+            "name": "lastUpdateDate",
+            "oid": "8ced6fe8-fd00-4a80-9566-ecf2389b678e",
+            "type": "datetime"
+        },
+        {
+            "displayLabel": "Created By",
+            "historyType": "createdBy",
+            "name": "createdBy",
+            "oid": "81a8274f-7a0f-445f-b294-7e8b9e34ee6a",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy",
+            "name": "lastUpdatedBy",
+            "oid": "b5b8b7a7-47b3-4bb7-bafc-529e15372c8e",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber",
+            "name": "versionNumber",
+            "oid": "de5696d5-9961-4f8d-b2ab-a62307b5c077",
+            "type": "number"
+        },
+        {
+            "displayLabel": "﻿Name",
+            "name": "name",
+            "oid": "27499fae-0584-4f28-9c73-e277e9fab183",
+            "required": true,
+            "type": "string"
+        },
+        {
+            "displayLabel": "Email",
+            "name": "email",
+            "oid": "25d3ff24-98e8-41fb-8ebf-d6ce1230a387",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Hire Date",
+            "name": "hireDate",
+            "oid": "a7a748ae-b83e-441c-abd4-dcea87fa5194",
+            "type": "date"
+        },
+        {
+            "displayLabel": "Country",
+            "name": "country",
+            "oid": "7cede690-afd3-4d62-aac1-8ce817386ab5",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Salary",
+            "name": "salary",
+            "oid": "70e6276c-7ae8-4fbf-8b68-2ce8e46003aa",
+            "type": "number"
+        },
+        {
+            "displayLabel": "Picture",
+            "name": "picture",
+            "oid": "7267b094-8b5b-426b-8b05-fbcd1182ae30",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Department",
+            "name": "department",
+            "oid": "1efbe4f1-65c7-4aad-8b0e-3cc601162cc1",
+            "type": "number"
+        }
+    ],
+    "hidden": false,
+    "name": "Employee",
+    "oid": "77f0f6e4-a8ac-4e27-8687-b63fb70e74ec",
+    "relationships": [
+        {
+            "deleteRule": "restrict",
+            "exposeAccessor": true,
+            "mappingField": "department",
+            "name": "departmentObject",
+            "reverseRelationship": "employeeCollection",
+            "targetEntity": "Department",
+            "type": "outgoing"
+        }
+    ]
+}

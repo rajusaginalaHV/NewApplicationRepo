@@ -1,0 +1,149 @@
+{
+  "title": "Edit Employee",
+  "description": "Updates single Employee record",
+  "variables": {
+    "countryTypeVar": {
+      "type": "countryType"
+    },
+    "employee": {
+      "type": "page:getEmployeeResponse"
+    },
+    "employeeETag": {
+      "type": "string"
+    },
+    "employeeId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "getAlphaCode": {
+      "type": "getAlphaCodeResponse"
+    },
+    "saveEmployeeChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.countryType": {
+      "endpoint": "getAlphaCode",
+      "service": "Countries",
+      "path": "response"
+    },
+    "@decorators.getAlphaCodeResponse": {
+      "endpoint": "getAlphaCode",
+      "service": "Countries",
+      "path": "response"
+    },
+    "@decorators.getEmployeeResponse": {
+      "endpoint": "get_Employee",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "countryType": {
+      "flag": "string",
+      "region": "string",
+      "timezones": "string[]"
+    },
+    "getAlphaCodeResponse": {
+      "flag": "string"
+    },
+    "getEmployeeResponse": {
+      "country": "string",
+      "email": "string",
+      "hireDate": "string",
+      "name": "string",
+      "picture": "string",
+      "salary": "number"
+    }
+
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "inputTextValue": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "saveEmployeeChain"
+        }
+      ]
+    },
+    "toggleDrawer": {
+      "chains": [
+        {
+          "chainId": "application:toggleDrawerHandler"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+{
+          "chainId": "loadEmployeeChain"
+        },
+        {
+          "chainId": "loadGetAlphaCodeChain",
+          "parameters": {}
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-avatar": {
+        "path": "ojs/ojavatar"
+      },
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  }
+}
