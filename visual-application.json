@@ -8,5 +8,7 @@
             "visualRuntime": "https://static.oracle.com/cdn/vb/2304.0.2"
         }
     },
-    "source.version": "2304"
+    "source.version": "2304",
+    "version":"1.0",
+    "rootURL":"ApplicationCICD"
 }
